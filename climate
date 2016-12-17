@@ -199,6 +199,7 @@ help=$(
     shelp "http-server [port]" "http-server serving the current directory"
     shelp "is-up <domain>" "determine if server is up"
     shelp "httpstat <url>" "visualizes curl statistics with httpstat"
+    shelp "ip-origin <url>" "Provide the IP information"
 
     printf "\n${PLAIN_BOLD}SSH:\n"
     shelp "download-file <file>" "download file from server"
@@ -222,7 +223,6 @@ help=$(
     shelp "get-pids <process>" "get all PIDs for a process name"
     shelp "trash-size" "find the trash size"
     shelp "empty-trash" "empty the trash"
-    shelp "ip-origin <url>" "Provide the IP information"
 
     printf "\n")
 
