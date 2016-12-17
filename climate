@@ -698,33 +698,31 @@ arr[$a]=`echo $data |tr ',' '\n'|tr -d '{}"' |xargs -d :|awk '/'$a'/{print $2}'`
 done
 cat <<EOF
 ---------------------------------
-|     key       |     value     |
+       IP      :  `echo "${arr[query]}"` 
 ---------------------------------
-|      Ip       |`echo "${arr[query]}"` |
+   Country     :  `echo "${arr[country]}"|xargs|awk '{print $1}'`
 ---------------------------------
-|   Country     |`echo "${arr[country]}"|xargs|awk '{print $1}'`                |
+   CountryCode :  `echo "${arr[countryCode]}"`
 ---------------------------------
-|  CountryCode  |`echo "${arr[countryCode]}"`           |
+    Region     :  `echo "${arr[region]}"|xargs|awk '{print $1}'`
 ---------------------------------
-|   Region      |`echo "${arr[region]}"|xargs|awk '{print $1}'`         |
+    RegionName :  `echo "${arr[regionName]}"`
 ---------------------------------
-|   RegionName  |`echo "${arr[regionName]}"`    |
+       City    :  `echo "${arr[city]}"`
 ---------------------------------
-|      City     |`echo "${arr[city]}"`  |
+     Latitude  :  `echo "${arr[lat]}"`
 ---------------------------------
-|    Latitude   |`echo "${arr[lat]}"`   |
+     Longitude :  `echo "${arr[lon]}"`
 ---------------------------------
-|    Longitude  |`echo "${arr[lon]}"`   |
+     Timezone  :  `echo "${arr[timezone]}"`
 ---------------------------------
-|    Timezone   |`echo "${arr[timezone]}"`      |
+       ISP     :  `echo "${arr[isp]}"`
 ---------------------------------
-|      Isp      |`echo "${arr[isp]}"`   |
+  Organization :  `echo "${arr[org]}"`
 ---------------------------------
-| Organization  |`echo "${arr[org]}"`   |
+       AS      :  `echo "${arr[as]}"`
 ---------------------------------
-|      AS       |`echo "${arr[as]}"`    |
----------------------------------
-|      Zip      |`echo "${arr[zip]}"`           |
+       Zip     :  `echo "${arr[zip]}"`
 ---------------------------------
 EOF
 fi
