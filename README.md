@@ -101,6 +101,7 @@ Command | Description
  `climate http-server [port]` | http-server serving the current directory
  `climate is-up <domain>` | determine if server is up
  `climate httpstat <url>` | visualizes curl statistics with httpstat
+ `climate ip-origin <url>` | Displays the IP information 
  <br> | 
  `climate download-file <file>` | download file from server
  `climate download-dir <dir>` | download dir from server

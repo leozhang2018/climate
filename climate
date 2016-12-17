@@ -2,7 +2,6 @@
 
 # ----------------------------------------------------------------------------
 # Colors
-
 if [[ $USE_COLORS == "false" ]]; then
     RED=""
     GREEN=""
@@ -200,6 +199,7 @@ help=$(
     shelp "http-server [port]" "http-server serving the current directory"
     shelp "is-up <domain>" "determine if server is up"
     shelp "httpstat <url>" "visualizes curl statistics with httpstat"
+    shelp "ip-origin <url>" "Provide the IP information"
 
     printf "\n${PLAIN_BOLD}SSH:\n"
     shelp "download-file <file>" "download file from server"
@@ -681,6 +681,24 @@ elif [[ $command == "trash-size" ]]; then
 elif [[ $command == "empty-trash" ]]; then
     rm -rf ~/.local/share/Trash/* &
     spinner $!
+
+# ----------------------------------------------------------------------------
+# ip-origin
+
+elif [[ $command == "ip-origin" ]]; then
+if [[ $command != "" ]]; then
+declare -A  arr
+ip=$2
+data=`curl --silent -G http://ip-api.com/json/$ip`
+req="query city lat lon country"
+for a in $req
+do
+arr[$a]=`echo $data |tr ',' '\n'|tr -d '{}"' |awk '/'$a':/{print $1}'|xargs -d :|awk '{print $2}'`
+done
+echo -e "IP:${arr[query]}"
+echo -e "Country:${arr[country]}\t\tCity:${arr[city]}"
+echo -e "Latitude:${arr[lat]}\tLongitude:${arr[lon]}"
+fi
 
 # ----------------------------------------------------------------------------
 # Welp, we don't know this command
