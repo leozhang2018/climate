@@ -222,7 +222,7 @@ help=$(
     shelp "get-pids <process>" "get all PIDs for a process name"
     shelp "trash-size" "find the trash size"
     shelp "empty-trash" "empty the trash"
-    shelp "ip-origin" "Provide the IP information"
+    shelp "ip-origin <url>" "Provide the IP information"
 
     printf "\n")
 

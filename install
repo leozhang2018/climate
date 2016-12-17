@@ -244,7 +244,6 @@ main() {
 
     pip_verify "speedtest"     "speedtest-cli"
     pip_verify "httpstat"      "httpstat"
-    pip_verify "ip-origin"     "ip-origin"
 
     printf "\nNeat! You're all set. Run 'climate' to see the whole list "
     printf "of commands supported. Enjoy!${PLAIN}\n"
