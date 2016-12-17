@@ -2,7 +2,6 @@
 
 # ----------------------------------------------------------------------------
 # Colors
-
 if [[ $USE_COLORS == "false" ]]; then
     RED=""
     GREEN=""
@@ -223,6 +222,7 @@ help=$(
     shelp "get-pids <process>" "get all PIDs for a process name"
     shelp "trash-size" "find the trash size"
     shelp "empty-trash" "empty the trash"
+    shelp "ip-origin" "Provide the IP information"
 
     printf "\n")
 
@@ -681,6 +681,24 @@ elif [[ $command == "trash-size" ]]; then
 elif [[ $command == "empty-trash" ]]; then
     rm -rf ~/.local/share/Trash/* &
     spinner $!
+
+# ----------------------------------------------------------------------------
+# ip-origin
+
+elif [[ $command == "ip-origin" ]]; then
+if [[ $command != "" ]]; then
+declare -A  arr
+ip=$2
+data=`curl --silent -G http://ip-api.com/json/$ip`
+req="query city lat lon country"
+for a in $req
+do
+arr[$a]=`echo $data |tr ',' '\n'|tr -d '{}"' |awk '/'$a':/{print $1}'|xargs -d :|awk '{print $2}'`
+done
+echo -e "IP:${arr[query]}"
+echo -e "Country:${arr[country]}\t\tCity:${arr[city]}"
+echo -e "Latitude:${arr[lat]}\tLongitude:${arr[lon]}"
+fi
 
 # ----------------------------------------------------------------------------
 # Welp, we don't know this command
